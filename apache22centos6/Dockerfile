@@ -26,13 +26,14 @@ ADD	configs/1cmodule.conf /etc/httpd/conf.d/
 # Inserting 1C packages
 ADD	install /root/install/
 
-# Install 1C packages
+# Install 1C packages & commons
 RUN	yum install -y /root/install/*.rpm \
-	&& rm -rf /root/install
+	&& rm -rf /root/install \
+	&& yum install -y ImageMagick freetype libgsf glib2 unixODBC krb5-libs 
 
 # Inserting licences
 ADD	configs/nethasp.ini /opt/1C/v8.3/x86_64/conf/nethasp.ini
-RUN	chown usr1cv8:grp1cv8 /opt/1C/v8.3/x86_64/conf/nethasp.ini
+RUN	chown apache:grp1cv8 -R /opt/1C/v8.3/x86_64/conf
 
 # Starting script
 ADD	configs/container-run.sh /
