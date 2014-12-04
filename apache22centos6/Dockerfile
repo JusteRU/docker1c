@@ -42,5 +42,4 @@ RUN	chmod 0700 /container-run.sh
 RUN	yum install -y tetex-afm glib2 glibc-devel glib2-devel glibc-headers glibc-static glibc-utils unixODBC libgsf ImageMagick krb5-libs
 
 #
-RUN	uname -a && ln -s /usr/lib64/libMagickWand.so.2 /usr/lib64/libWand.so.2 \
-	&& ln -s /usr/lib64/libMagickWand.so.2.0.0 /usr/lib64/libWand.so.2.0.0 \
+RUN	yum install -y ImageMagick.i686
