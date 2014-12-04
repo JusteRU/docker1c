@@ -28,5 +28,5 @@ EXPOSE 80
 # Inserting apache configuring
 ADD	1cmodule.conf /etc/httpd/conf.d/
 
-# Restarting apache
-RUN	/etc/init.d/httpd start
+# Command to run apache
+CMD ["httpd", "-DFOREGROUND"]
