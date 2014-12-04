@@ -42,4 +42,4 @@ RUN	chmod 0700 /container-run.sh
 RUN	yum install -y tetex-afm glib2 glibc-devel glib2-devel glibc-headers glibc-static glibc-utils unixODBC libgsf ImageMagick krb5-libs
 
 #
-RUN	yum install -y ImageMagick.i686
+RUN	ll /usr
