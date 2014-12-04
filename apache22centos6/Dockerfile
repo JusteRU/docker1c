@@ -2,7 +2,7 @@ FROM	centos:centos6
 
 # Install apache
 RUN	yum install httpd -y \
-	&& chckconfig httpd on
+	&& chkconfig httpd on
 
 # Making some working dirs
 RUN	mkdir /1cconf \
