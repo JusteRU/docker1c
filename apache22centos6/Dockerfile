@@ -42,4 +42,5 @@ RUN	chmod 0700 /container-run.sh
 RUN	yum install -y tetex-afm glib2 glibc-devel glib2-devel glibc-headers glibc-static glibc-utils unixODBC libgsf ImageMagick krb5-libs
 
 #
-RUN	ll /usr
+RUN	ln -s /usr/lib64/libMagickWand.so.2.0.0 /usr/lib/libWand.so.1 \
+	&& ln -s /usr/lib64/libMagickWand.so.2 /usr/lib/libWand.so
