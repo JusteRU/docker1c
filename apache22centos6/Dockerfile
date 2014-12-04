@@ -7,17 +7,13 @@ RUN	yum install httpd -y
 EXPOSE 80
 
 # Command to run apache
-CMD ["httpd", "-DFOREGROUND"]
+CMD	["/container-run.sh"]
 
 # Adding external volume
 VOLUME /1c
 
 # Adding default.vrd to apache
 ADD	default.vrd /1cconf/
-
-# Making some working dirs
-RUN	chown apache:apache -R /1cconf \
-	&& chown apache:apache -R /1c
 
 ## Configuring 1C apache module - it doesn't working
 # RUN	/opt/1C/v8.3/x86_64/webinst -apache22 -wsdir base1c -dir '/1cconf/' \
@@ -33,3 +29,7 @@ ADD	install /root/install/
 # Install 1C packages
 RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
+
+# Starting script
+ADD	container-run.sh /
+RUN	chmod 0700 /container-run.sh
