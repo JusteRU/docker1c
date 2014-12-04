@@ -30,3 +30,7 @@ ADD	1cmodule.conf /etc/httpd/conf.d/
 
 # Command to run apache
 CMD ["httpd", "-DFOREGROUND"]
+
+# Adding default.vrd to apache
+ADD	default.vrd /1cconf/
+RUN	chown apache:apache /1cconf/default.vrd
