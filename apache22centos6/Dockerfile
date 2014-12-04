@@ -12,6 +12,9 @@ CMD ["httpd", "-DFOREGROUND"]
 # Adding external volume
 VOLUME /1c
 
+# Adding default.vrd to apache
+ADD	default.vrd /1cconf/
+
 # Making some working dirs
 RUN	chown apache:apache -R /1cconf \
 	&& chown apache:apache -R /1c
@@ -30,9 +33,6 @@ ADD	install /root/install/
 # Install 1C packages
 RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
-
-# Adding default.vrd to apache
-ADD	default.vrd /1cconf/
 
 # test
 RUN getenforce
