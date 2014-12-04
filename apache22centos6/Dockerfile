@@ -21,7 +21,7 @@ ADD	default.vrd /1cconf/
 #	&& /etc/init.d/httpd restart
 
 # Inserting apache configuring
-ADD	1cmodule.conf /etc/httpd/conf.d/
+ADD	configs/1cmodule.conf /etc/httpd/conf.d/
 
 # Inserting 1C packages
 ADD	install /root/install/
@@ -29,6 +29,10 @@ ADD	install /root/install/
 # Install 1C packages
 RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
+
+# Inserting licences
+ADD	configs/nethasp.ini /opt/1C/v8.2/x86_64/conf/nethasp.ini
+RUN	chown usr1cv8:grp1cv8 /opt/1C/v8.2/x86_64/conf/nethasp.ini
 
 # Starting script
 ADD	container-run.sh /
