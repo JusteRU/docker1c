@@ -33,6 +33,3 @@ ADD	install /root/install/
 # Install 1C packages
 RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
-
-# test
-RUN getenforce
