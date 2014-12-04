@@ -26,10 +26,9 @@ ADD	configs/1cmodule.conf /etc/httpd/conf.d/
 # Inserting 1C packages
 ADD	install /root/install/
 
-# Install 1C packages & commons
+# Install 1C packages
 RUN	yum install -y /root/install/*.rpm \
-	&& rm -rf /root/install \
-	&& yum install -y ImageMagick freetype libgsf glib2 unixODBC krb5-libs 
+	&& rm -rf /root/install 
 
 # Inserting licences
 ADD	configs/nethasp.ini /opt/1C/v8.3/x86_64/conf/nethasp.ini
@@ -38,3 +37,6 @@ RUN	chown apache:grp1cv8 -R /opt/1C/v8.3/x86_64/conf
 # Starting script
 ADD	configs/container-run.sh /
 RUN	chmod 0700 /container-run.sh
+
+# 1C links
+RUN	yum install -y tetex-afm glib2 glibc-devel glib2-devel glibc-headers glibc-static glibc-utils unixODBC libgsf ImageMagick krb5-libs
