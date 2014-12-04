@@ -22,6 +22,9 @@ RUN	yum install -y /root/install/*.rpm \
 #	-connStr 'File="/1c/base1c";' -confPath /usr/local/apache2/conf/httpd.conf \
 #	&& /etc/init.d/httpd restart
 
+# Opening ports
+EXPOSE 80
+
 # Inserting apache configuring
 ADD	1cmodule.conf /etc/httpd/conf.d/
 
