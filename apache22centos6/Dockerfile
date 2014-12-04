@@ -2,7 +2,7 @@ FROM	centos:centos6
 
 # Install apache
 RUN	yum install httpd -y \
-	chckconfig httpd on
+	&& chckconfig httpd on
 
 # Making some working dirs
 RUN	mkdir /1cconf \
@@ -17,7 +17,13 @@ ADD	install /root/install/
 RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
 
-# Configuring 1C apache module
-RUN	/opt/1C/v8.3/x86_64/webinst -apache22 -wsdir base1c -dir '/1cconf/' \
-	-connStr 'File="/1c/base1c";' -confPath /usr/local/apache2/conf/httpd.conf \
-	&& /etc/init.d/httpd restart
+# Configuring 1C apache module - it doesn't working
+# RUN	/opt/1C/v8.3/x86_64/webinst -apache22 -wsdir base1c -dir '/1cconf/' \
+#	-connStr 'File="/1c/base1c";' -confPath /usr/local/apache2/conf/httpd.conf \
+#	&& /etc/init.d/httpd restart
+
+# Inserting apache configuring
+ADD	1cmodule.conf /etc/httpd/conf.d/
+
+# Restarting apache
+RUN	/etc/init.d/httpd restart
