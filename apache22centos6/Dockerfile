@@ -26,4 +26,4 @@ RUN	yum install -y /root/install/*.rpm \
 ADD	1cmodule.conf /etc/httpd/conf.d/
 
 # Restarting apache
-RUN	/etc/init.d/httpd restart
+RUN	/etc/init.d/httpd start
