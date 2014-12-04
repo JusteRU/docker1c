@@ -31,8 +31,8 @@ RUN	yum install -y /root/install/*.rpm \
 	&& rm -rf /root/install
 
 # Inserting licences
-ADD	configs/nethasp.ini /opt/1C/v8.2/x86_64/conf/nethasp.ini
-RUN	chown usr1cv8:grp1cv8 /opt/1C/v8.2/x86_64/conf/nethasp.ini
+ADD	configs/nethasp.ini /opt/1C/v8.3/x86_64/conf/nethasp.ini
+RUN	chown usr1cv8:grp1cv8 /opt/1C/v8.3/x86_64/conf/nethasp.ini
 
 # Starting script
 ADD	configs/container-run.sh /
